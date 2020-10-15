@@ -1,10 +1,10 @@
 # run a monero full node with docker
 
-:white_check_mark: Debian Stable
+:ballot_box_with_check: Debian Stable
 
-:white_check_mark: sha256 checked against monero [hashes.txt](https://www.getmonero.org/downloads/hashes.txt)
+:ballot_box_with_check: sha256 checked against monero [hashes.txt](https://www.getmonero.org/downloads/hashes.txt)
 
-:white_check_mark: secure monerod flags 
+:ballot_box_with_check: secure monerod flags 
 
 TODO: separate monerod from data directory
       upload to docker hub
