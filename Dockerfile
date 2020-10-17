@@ -19,7 +19,7 @@ FROM debian:stable
 VOLUME /data
 RUN addgroup monero && \
     adduser --shell /usr/sbin/nologin --ingroup monero --system monero && \
-    mkdir /data && chown -R monero:monero /data && \
+    chown -R monero:monero /data
 COPY --from=builder --chown=monero:monero /app/monerod /data/monerod
 
 USER monero
