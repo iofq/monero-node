@@ -1,17 +1,19 @@
 # run a monero full node with docker
 
-* Debian Stable
-* sha256 checked against monero [hashes.txt](https://www.getmonero.org/downloads/hashes.txt)
-* secure monerod flags 
+:heavy_check_mark: Debian stable
 
-TODO: separate monerod from data directory
-      upload to docker hub
+:heavy_check_mark: sha256 checked against monero [hashes.txt](https://www.getmonero.org/downloads/hashes.txt)
+
+:heavy_check_mark: secure monerod flags 
+
+
 
 ```bash
-docker run -it \
+docker run -it -d \
   -name=monerod
-  -v data_dir:/app \
+  -v xmr_data_dir:/data \ #blockchain data
   -p 18080:18080 \
   -p 18081:18081 \ #optional, for RPC
   --restart=unless-stopped \ 
   iofq/monero-node
+```
