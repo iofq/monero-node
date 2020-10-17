@@ -16,12 +16,14 @@ RUN wget https://dlsrc.getmonero.org/cli/monero-linux-x64-v$XMR_VER.tar.bz2 && \
 
 FROM debian:stable
 
+VOLUME /data
 RUN addgroup monero && \
-    adduser --home /app --shell /usr/sbin/nologin --ingroup monero --system monero && \
-    chown -R monero:monero /app
-COPY --from=builder --chown=monero:monero /app/monerod /app/monerod
+    adduser --shell /usr/sbin/nologin --ingroup monero --system monero && \
+    mkdir /data && chown -R monero:monero /data && \
+COPY --from=builder --chown=monero:monero /app/monerod /data/monerod
 
-EXPOSE 18080 18081
 USER monero
-ENTRYPOINT ["./app/monerod"]
-CMD ["--rpc-bind-ip=0.0.0.0", "--rpc-ssl=enabled", "--restricted-rpc", "--confirm-external-bind", "--data-dir=/data", "--non-interactive", "--no-zmq", "--enforce-dns-checkpointing", "--log-level=1"]
+EXPOSE 18080 18081
+
+ENTRYPOINT ["./data/monerod"]
+CMD ["--rpc-bind-ip=0.0.0.0", "--rpc-ssl=enabled", "--restricted-rpc", "--confirm-external-bind", "--data-dir=/data", "--non-interactive", "--no-zmq", "--enforce-dns-checkpointing", "--log-level=0"]
