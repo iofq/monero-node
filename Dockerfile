@@ -1,6 +1,6 @@
 FROM debian:stable AS builder
 
-ENV XMR_VER=0.17.1.0
+ENV XMR_VER=0.17.1.1
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update && apt-get -y install wget bzip2
