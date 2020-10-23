@@ -20,10 +20,10 @@ VOLUME /data
 RUN addgroup monero && \
     adduser --shell /usr/sbin/nologin --ingroup monero --system monero && \
     chown -R monero:monero /data
-COPY --from=builder --chown=monero:monero /app/monerod /data/monerod
+COPY --from=builder --chown=monero:monero /app/monerod /app/monerod
 
 USER monero
 EXPOSE 18080 18081
 
-ENTRYPOINT ["./data/monerod"]
+ENTRYPOINT ["./app/monerod"]
 CMD ["--rpc-bind-ip=0.0.0.0", "--rpc-ssl=enabled", "--restricted-rpc", "--confirm-external-bind", "--data-dir=/data", "--non-interactive", "--no-zmq", "--enforce-dns-checkpointing", "--log-level=0"]

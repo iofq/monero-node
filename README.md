@@ -10,10 +10,10 @@
 
 ```bash
 docker run -it -d \
-  --name monerod
+  --name monerod \
   -v xmr_data:/data \
   -p 18080:18080 \
-  -p 18081:18081 \ #optional, for RPC
+  -p 18081:18081 \ 
   --restart unless-stopped \ 
   iofq/monero-node
 ```
