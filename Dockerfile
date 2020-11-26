@@ -2,7 +2,7 @@ FROM debian:stable AS build
 ARG DEBIAN_FRONTEND=noninteractive
 
 #only to force hub.docker.com image to rebuild
-ENV MONERO_VERSION=0.17.1.3
+ENV MONERO_VERSION=0.17.1.5
 
 WORKDIR /root
 RUN apt-get -y update && apt-get -y install curl lbzip2 && \
